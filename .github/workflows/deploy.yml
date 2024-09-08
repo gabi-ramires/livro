@@ -18,17 +18,6 @@ jobs:
       with:
         php-version: '8.1'  # Ajuste para a versão do PHP que você está usando
 
-    - name: Install Composer
-      run: |
-        curl -sS https://getcomposer.org/installer | php
-        sudo mv composer.phar /usr/local/bin/composer
-        composer --version
-
-    - name: Install PHP Dependencies
-      run: |
-        cd htdocs
-        composer install --no-dev --optimize-autoloader
-
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
       with:
