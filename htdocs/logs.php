@@ -5,39 +5,47 @@
 // URL da solicitação
 $url = 'https://www.instagram.com/stories/cactoramires/?r=1';
 
-// Inicializa a sessão cURL
-$ch = curl_init($url);
-
-// Configura as opções cURL
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Retorna o resultado como uma string
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
+// Configuração do cabeçalho HTTP
+$headers = [
+    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
     'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-    'Cache-Control: max-age=0',
-    'DPR: 1',
-    'Priority: u=0, i',
-    'Sec-CH-Prefers-Color-Scheme: dark',
-    'Sec-CH-UA: "Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
-    'Sec-CH-UA-Full-Version-List: "Not)A;Brand";v="99.0.0.0", "Google Chrome";v="127.0.6533.72", "Chromium";v="127.0.6533.72"',
-    'Sec-CH-UA-Mobile: ?0',
-    'Sec-CH-UA-Model: ""',
-    'Sec-CH-UA-Platform: "Linux"',
-    'Sec-CH-UA-Platform-Version: "6.8.0"',
-    'Sec-Fetch-Dest: document',
-    'Sec-Fetch-Mode: navigate',
-    'Sec-Fetch-Site: same-origin',
-    'Sec-Fetch-User: ?1',
+    'Cookie: mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_nrcb=1; dpr=1; wd=1366x647; csrftoken=wjbKROX37T4ozvyrs2e6IzSHUvMe5acN; ds_user_id=53215391319; sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA',
+    'Connection: keep-alive',
     'Upgrade-Insecure-Requests: 1',
-    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-    'Viewport-Width: 1366'
-]);
+    'Sec-Fetch-Site: same-origin',
+    'Sec-Fetch-Mode: navigate',
+    'Sec-Fetch-User: ?1',
+    'Sec-Fetch-Dest: document'
+];
 
-// Define os cookies
-curl_setopt($ch, CURLOPT_COOKIE, 'sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA;');
+// Inicializa uma sessão cURL
+$ch = curl_init();
+
+// Define a URL
+curl_setopt($ch, CURLOPT_URL, $url);
+
+// Define os cabeçalhos
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+// Define que queremos retornar o resultado como string
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Executa a requisição
+$response = curl_exec($ch);
+
+// Fecha a sessão cURL
+curl_close($ch);
 
 // Executa a solicitação
 $response = curl_exec($ch);
 
+// Expressão regular para encontrar todas as ocorrências de "username"
+preg_match_all('/"username":"(.*?)"/', $response, $matches);
+
+// Exibe os usernames encontrados
+$usernames = $matches[1]; // $matches[1] contém as capturas da expressão regular
+var_dump($usernames); die();
 // Checa se houve erros
 if ($response === false) {
     echo 'Erro: ' . curl_error($ch);
