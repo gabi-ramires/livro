@@ -3,7 +3,7 @@
 <?php
 session_start();
 echo "<pre>";
-var_dump($_SESSION);
+var_dump($_SERVER["HTTP_USER_AGENT"]);
 
 ?>
 
@@ -17,14 +17,7 @@ var_dump($_SESSION);
     </style>
 </head>
 <body>
-    <button onclick="clicou()">console.log(window)</button>
-    <script>
 
-        function clicou(){
-         console.log(window)   
-        }
-        
-    </script>
 </body>
 </html>
 
