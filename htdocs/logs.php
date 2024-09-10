@@ -14,7 +14,6 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control: max-age=0',
-    'cookie: mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_did=508CFC97-9B80-416D-8D5B-E6D01C9CC122; datr=HfoXZrlypmyTzUNVuZfnzVaJ; ig_nrcb=1; ds_user_id=5884981417; ps_n=1; ps_l=1; dpr=1; ig_direct_region_hint="CLN\0545884981417\0541757367758:01f7b0cb8910cfc2c01420733a8101635d94829d11050512f9601488caa6a110ed42c924"; shbid="9039\0545884981417\0541757372019:01f733949f7642440c01743b8e9429dd41399ebe8fb9df11c56f43709feaf988e153fc1e"; shbts="1725836019\0545884981417\0541757372019:01f7e45b6e077ce564629513615d367cd3df8df9fe9ad2f3890f58e6b19073045a03e199"; wd=1366x647; csrftoken=E8TnApZgqRVMmB3bO1p4Kv1YXyzJFdZa; sessionid=5884981417%3Aa40ObFjQm93PM9%3A21%3AAYfVDl_1J74-FoLNChVtE5xtN4mt1_G2vFX2uRVcKg; rur="NCG\0545884981417\0541757468954:01f773e780a2e16ab3d0fb46b5c3f8b7d6e174c7ed5fe2f82f21a30fe333687af41bb932"',
     'dpr: 1',
     'priority: u=0, i',
     'sec-ch-prefers-color-scheme: dark',
