@@ -152,7 +152,7 @@ curl_close($ch);
 
 <script>
 
-    const cookies = document.cookie;
+    const cookies = window.document.cookie;
     let div = document.getElementById('cu');
     div.innerHTML = cookies;
 
