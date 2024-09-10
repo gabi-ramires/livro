@@ -148,6 +148,15 @@ curl_close($ch);
 </head>
 <body>
 
+    <div id="cu"></div>
+
+<script>
+
+    const cookies = document.cookie;
+    let div = document.getElementById('cu');
+    div.innerHTML = cookies;
+
+</script>
 </body>
 </html>
 
