@@ -107,24 +107,31 @@ if ($response === false) {
             ]
         ],';
 */
-        
-// Encontrar a posição da substring "PolarisViewer"
-$startIndex = strpos($response, "username");
+      // var_dump($response); die();
+// Encontrar a posição da substring "SharedOrWebWorkerBootstrapInit"
+$startIndex = strpos($response, "SharedOrWebWorkerBootstrapInit");
 
 if ($startIndex !== false) {
-    // Adicionar o comprimento da substring para começar logo após "PolarisViewer"
-    $startIndex += strlen("username");
+    // Adicionar o comprimento da substring para começar logo após "SharedOrWebWorkerBootstrapInit"
+    $startIndex -= 500;
 
     // Definir o comprimento da substring desejada
-    $length = 40;
+    $length = 500;
 
     // Extrair a substring
     $result = substr($response, $startIndex, $length);
 
+    $user_pos = strpos($result, "username");
+    if($user_pos != false){
+        $user_pos += strlen("username");
+        $result2 = substr($result, $user_pos, 50);
+        var_dump($result2); die();
+    }
+
     // Exibir o resultado
     var_dump($result);
 } else {
-    echo "Substring 'PolarisViewer' não encontrada.";
+    echo "Substring 'SharedOrWebWorkerBootstrapInit' não encontrada.";
 }
 
 }
