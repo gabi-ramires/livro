@@ -2,37 +2,40 @@
 
 <?php
 
-// URL do Instagram que você quer acessar
+// URL da solicitação
 $url = 'https://www.instagram.com/stories/cactoramires/?r=1';
 
 // Inicializa a sessão cURL
 $ch = curl_init($url);
 
-// Define as opções para a sessão cURL
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Configura as opções cURL
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Retorna o resultado como uma string
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-    'cache-control: max-age=0',
-    'dpr: 1',
-    'priority: u=0, i',
-    'sec-ch-prefers-color-scheme: dark',
-    'sec-ch-ua: "Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
-    'sec-ch-ua-full-version-list: "Not)A;Brand";v="99.0.0.0", "Google Chrome";v="127.0.6533.72", "Chromium";v="127.0.6533.72"',
-    'sec-ch-ua-mobile: ?0',
-    'sec-ch-ua-model: ""',
-    'sec-ch-ua-platform: "Linux"',
-    'sec-ch-ua-platform-version: "6.8.0"',
-    'sec-fetch-dest: document',
-    'sec-fetch-mode: navigate',
-    'sec-fetch-site: same-origin',
-    'sec-fetch-user: ?1',
-    'upgrade-insecure-requests: 1',
-    'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-    'viewport-width: 1366'
+    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+    'Cache-Control: max-age=0',
+    'DPR: 1',
+    'Priority: u=0, i',
+    'Sec-CH-Prefers-Color-Scheme: dark',
+    'Sec-CH-UA: "Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
+    'Sec-CH-UA-Full-Version-List: "Not)A;Brand";v="99.0.0.0", "Google Chrome";v="127.0.6533.72", "Chromium";v="127.0.6533.72"',
+    'Sec-CH-UA-Mobile: ?0',
+    'Sec-CH-UA-Model: ""',
+    'Sec-CH-UA-Platform: "Linux"',
+    'Sec-CH-UA-Platform-Version: "6.8.0"',
+    'Sec-Fetch-Dest: document',
+    'Sec-Fetch-Mode: navigate',
+    'Sec-Fetch-Site: same-origin',
+    'Sec-Fetch-User: ?1',
+    'Upgrade-Insecure-Requests: 1',
+    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
+    'Viewport-Width: 1366'
 ]);
 
-// Executa a requisição
+// Define os cookies
+curl_setopt($ch, CURLOPT_COOKIE, 'mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_did=508CFC97-9B80-416D-8D5B-E6D01C9CC122; datr=HfoXZrlypmyTzUNVuZfnzVaJ; ig_nrcb=1; ps_n=1; ps_l=1; dpr=1; ig_direct_region_hint="CLN\0545884981417\0541757367758:01f7b0cb8910cfc2c01420733a8101635d94829d11050512f9601488caa6a110ed42c924"; shbid="9039\0545884981417\0541757372019:01f733949f7642440c01743b8e9429dd41399ebe8fb9df11c56f43709feaf988e153fc1e"; shbts="1725836019\0545884981417\0541757372019:01f7e45b6e077ce564629513615d367cd3df8df9fe9ad2f3890f58e6b19073045a03e199"; wd=1366x647; csrftoken=wjbKROX37T4ozvyrs2e6IzSHUvMe5acN; ds_user_id=53215391319; sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA; rur="LDC\05453215391319\0541757471514:01f74c3b7ff87996657869984d2fef6cc38a3458ab38f3280851f379e57406642f4fade5"');
+
+// Executa a solicitação
 $response = curl_exec($ch);
 
 // Checa se houve erros
@@ -106,31 +109,25 @@ if ($response === false) {
             ]
         ],';
 */
-      // var_dump($response); die();
-// Encontrar a posição da substring "SharedOrWebWorkerBootstrapInit"
-$startIndex = strpos($response, "SharedOrWebWorkerBootstrapInit");
+        
+// Encontrar a posição da substring "PolarisViewer"
+$startIndex = strpos($response, "username");
 
 if ($startIndex !== false) {
-    // Adicionar o comprimento da substring para começar logo após "SharedOrWebWorkerBootstrapInit"
-    $startIndex -= 500;
+    // Adicionar o comprimento da substring para começar logo após "PolarisViewer"
+    $startIndex += strlen("username");
 
     // Definir o comprimento da substring desejada
-    $length = 500;
+    $length = 2000;
 
     // Extrair a substring
     $result = substr($response, $startIndex, $length);
 
-    $user_pos = strpos($result, "username");
-    if($user_pos != false){
-        $user_pos += strlen("username");
-        $result2 = substr($result, $user_pos, 50);
-        var_dump($result2); die();
-    }
-
     // Exibir o resultado
+    echo "<pre>";
     var_dump($result);
 } else {
-    echo "Substring 'SharedOrWebWorkerBootstrapInit' não encontrada.";
+    echo "Substring 'username' não encontrada.";
 }
 
 }
