@@ -33,7 +33,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 ]);
 
 // Define os cookies
-curl_setopt($ch, CURLOPT_COOKIE, 'mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_did=508CFC97-9B80-416D-8D5B-E6D01C9CC122; datr=HfoXZrlypmyTzUNVuZfnzVaJ; ig_nrcb=1; ps_n=1; ps_l=1; dpr=1; ig_direct_region_hint="CLN\0545884981417\0541757367758:01f7b0cb8910cfc2c01420733a8101635d94829d11050512f9601488caa6a110ed42c924"; shbid="9039\0545884981417\0541757372019:01f733949f7642440c01743b8e9429dd41399ebe8fb9df11c56f43709feaf988e153fc1e"; shbts="1725836019\0545884981417\0541757372019:01f7e45b6e077ce564629513615d367cd3df8df9fe9ad2f3890f58e6b19073045a03e199"; wd=1366x647; csrftoken=wjbKROX37T4ozvyrs2e6IzSHUvMe5acN; ds_user_id=53215391319; sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA; rur="LDC\05453215391319\0541757471514:01f74c3b7ff87996657869984d2fef6cc38a3458ab38f3280851f379e57406642f4fade5"');
+curl_setopt($ch, CURLOPT_COOKIE, 'PHPSESSID=841cc931f859daa065b2af551260611e; __test=b8aabf006dd7bf09ac586cc267bf926c');
 
 // Executa a solicitação
 $response = curl_exec($ch);
@@ -126,7 +126,6 @@ if ($startIndex !== false) {
     // Exibir o resultado
     echo "<pre>";
     var_dump($result);
-    var_dump($_COOKIE);
 } else {
     echo "Substring 'username' não encontrada.";
 }
