@@ -33,7 +33,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 ]);
 
 // Define os cookies
-curl_setopt($ch, CURLOPT_COOKIE, 'PHPSESSID=841cc931f859daa065b2af551260611e; __test=b8aabf006dd7bf09ac586cc267bf926c');
+curl_setopt($ch, CURLOPT_COOKIE, 'sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA;');
 
 // Executa a solicitação
 $response = curl_exec($ch);
