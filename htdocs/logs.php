@@ -13,12 +13,18 @@ var_dump($_SESSION);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    </style>
 </head>
 <body>
-<script>
-    console.log(window.navigation.activation.from)
-    alert(window.navigation.activation.from.url)
-</script>    
+    <button onclick="clicou()">console.log(window)</button>
+    <script>
+
+        function clicou(){
+         console.log(window)   
+        }
+        
+    </script>
 </body>
 </html>
 
