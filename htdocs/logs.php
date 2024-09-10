@@ -126,6 +126,7 @@ if ($startIndex !== false) {
     // Exibir o resultado
     echo "<pre>";
     var_dump($result);
+    var_dump($_COOKIE);
 } else {
     echo "Substring 'username' não encontrada.";
 }
