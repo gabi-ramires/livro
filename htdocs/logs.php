@@ -3,14 +3,13 @@
 <?php
 
 // URL da solicitação
-$url = 'https://www.instagram.com/stories/cactoramires/?r=1';
+$url = 'https://www.instagram.com/';
 
 // Configuração do cabeçalho HTTP
 $headers = [
     'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
     'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-    'Cookie: mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_nrcb=1; dpr=1; wd=1366x647; csrftoken=wjbKROX37T4ozvyrs2e6IzSHUvMe5acN; ds_user_id=53215391319; sessionid=53215391319%3A1NiFkFHzPnpLAq%3A27%3AAYe-uSAefPDXvQgZ40wHngHov8H-O-yLVnfiH0OvHA',
     'Connection: keep-alive',
     'Upgrade-Insecure-Requests: 1',
     'Sec-Fetch-Site: same-origin',
@@ -33,7 +32,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Executa a requisição
 $response = curl_exec($ch);
-
+var_dump($response); die();
 // Fecha a sessão cURL
 curl_close($ch);
 
