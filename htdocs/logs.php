@@ -23,7 +23,6 @@
 var_dump($_COOKIE);
 echo "<br>";
 echo "<br>";
-echo "<br>";
 // URL da solicitação
 $url = 'https://www.instagram.com/stories/cactoramires';
 
