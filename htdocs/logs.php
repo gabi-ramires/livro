@@ -11,6 +11,7 @@
 </script>
 
 <?php
+var_dump($_SESSION);
 die;
 // URL da solicitação
 $url = 'https://www.instagram.com/';
