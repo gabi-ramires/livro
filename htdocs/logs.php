@@ -1,7 +1,17 @@
 <a href="index.html">Inicio</a>
+<div id='coo'>
+
+</div>
+<script>
+    let coo = document.getElementById('coo');
+
+    let cookie = window.document.cookie;
+
+    coo.innerHTML = cookie;
+</script>
 
 <?php
-
+die;
 // URL da solicitação
 $url = 'https://www.instagram.com/';
 
