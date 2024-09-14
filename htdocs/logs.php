@@ -5,28 +5,44 @@
 <script>
     let coo = document.getElementById('coo');
 
-    let cookie = window.document.cookie;
+    let cookies = window.document.cookie;
 
-    coo.innerHTML = cookie;
+    coo.innerHTML = cookies;
+
+    fetch('logs.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'cookies=' + encodeURIComponent(cookies)
+    });
 </script>
 
 <?php
-var_dump($_SESSION);
-die;
+
+var_dump($_COOKIE);
+echo "<br>";
+echo "<br>";
+echo "<br>";
 // URL da solicitação
-$url = 'https://www.instagram.com/';
+$url = 'https://www.instagram.com/stories/cactoramires';
 
 // Configuração do cabeçalho HTTP
 $headers = [
-    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-    'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-    'Connection: keep-alive',
-    'Upgrade-Insecure-Requests: 1',
-    'Sec-Fetch-Site: same-origin',
-    'Sec-Fetch-Mode: navigate',
-    'Sec-Fetch-User: ?1',
-    'Sec-Fetch-Dest: document'
+    'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+    'cache-control: max-age=0',
+    'cookie: mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; ig_did=508CFC97-9B80-416D-8D5B-E6D01C9CC122; datr=HfoXZrlypmyTzUNVuZfnzVaJ; ig_nrcb=1; ps_n=1; ps_l=1; ig_direct_region_hint="CLN\0545884981417\0541757367758:01f7b0cb8910cfc2c01420733a8101635d94829d11050512f9601488caa6a110ed42c924"; shbid="6340\05453215391319\0541757637894:01f727a954d83018a7939c2f64750445b39f44a2c708aca8aca5b3c194f13eb356d72219"; shbts="1726101894\05453215391319\0541757637894:01f7e0953d55cbad83d28342dc4f9b8b690e0c5be28552cea01f6143563fafd2a943e026"; ds_user_id=53215391319; csrftoken=lZtvbMqhk6joGNiQM577apPwqcarUHga; wd=375x667; rur="VLL\05453215391319\0541757876027:01f7c3e7a7e81a36e3bdb8bb7b60176a55702a6cb02d7e5763bcf6ad1ba82bddfa4e04d2"; sessionid=53215391319%3ALhAKCVqFj68pJX%3A7%3AAYf4IlifP-YzBv9ehuUdLk89vfFyrDHxAwsGtREzHA; dpr=2',
+    'dpr: 1',
+    'priority: u=0, i',
+    'sec-ch-prefers-color-scheme: dark',
+    'sec-fetch-dest: document',
+    'sec-fetch-mode: navigate',
+    'sec-fetch-site: none',
+    'sec-fetch-user: ?1',
+    'upgrade-insecure-requests: 1',
+    'user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
+    'viewport-width: 307'
 ];
 
 // Inicializa uma sessão cURL
@@ -43,12 +59,9 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 // Executa a requisição
 $response = curl_exec($ch);
-var_dump($response); die();
+//var_dump($response); die();
 // Fecha a sessão cURL
 curl_close($ch);
-
-// Executa a solicitação
-$response = curl_exec($ch);
 
 // Expressão regular para encontrar todas as ocorrências de "username"
 preg_match_all('/"username":"(.*?)"/', $response, $matches);
@@ -170,9 +183,6 @@ curl_close($ch);
 
 <script>
 
-    const cookies = window.document.cookie;
-    let div = document.getElementById('cu');
-    div.innerHTML = cookies;
 
 </script>
 </body>
